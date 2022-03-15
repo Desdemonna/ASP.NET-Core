@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "OnlinePizzeria.Core/1.0.0": {
+        "dependencies": {
+          "OnlinePizzeria.Infrastructure": "1.0.0"
+        },
+        "runtime": {
+          "OnlinePizzeria.Core.dll": {}
+        }
+      },
+      "OnlinePizzeria.Infrastructure/1.0.0": {
+        "runtime": {
+          "OnlinePizzeria.Infrastructure.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "OnlinePizzeria.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "OnlinePizzeria.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
