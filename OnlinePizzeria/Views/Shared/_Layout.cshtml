@@ -12,16 +12,25 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Online Pizzeria</a>
+                <a class="navbar-brand ml-5" asp-controller="Home" asp-action="Index"><span class=""><img width="70" height="70" src="https://w7.pngwing.com/pngs/890/893/png-transparent-pizza-logo-pizza-delivery-italian-cuisine-chef-pizza-icon-logo-design-food-logo-cooking.png" /></span><br></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
+                    <div class="navbar-nav ml-5">
+                        <div class="input-group">
+                            <div class="">
+                                <input type="search" placeholder="Search.." id="form" class="form-control" />
+                            </div>
+                            <button type="button" class="btn btn-primary" id="submit" onclick="getData()">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <ul class="navbar-nav ml-auto mr-4">
+                        <li class="nav-item"><a class="nav-link text-dark" asp-controller="Cart" asp-action="Index"><img id="image" width="25" height="25" src="https://www.seekpng.com/png/full/253-2534415_shopping-trolley-vector-png.png" /> Cart</a></li>
+
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
@@ -39,6 +48,13 @@
             &copy; 2022 - Online Pizzeria - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+    <script>
+        function getData() {
+
+            var selected = document.getElementById('form').value;
+            window.location.href = `/Home/Search?data=${selected}`;
+        }
+    </script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
