@@ -1,11 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using OnlinePizzeria.Models;
-using System;
-using System.Collections.Generic;
+using OnlinePizzeria.ViewModels;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace OnlinePizzeria.Controllers
 {
@@ -28,7 +24,9 @@ namespace OnlinePizzeria.Controllers
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        [ResponseCache(Duration = 0, 
+            Location = ResponseCacheLocation.None, 
+            NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
