@@ -4,25 +4,18 @@
 @inject UserManager<IdentityUser> UserManager
 
 <ul class="navbar-nav">
-    @if (SignInManager.IsSignedIn(User))
+    @if (this.User.Identity.IsAuthenticated)
     {
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
-        </li>
-        @if (User.IsInRole(GlobalConstants.AdministratorRoleName))
-        {
-            <li class="nav-item">
-                <a class="nav-link text-dark" asp-controller="Admin" asp-action="Index">Admin</a>
-            </li>
-}
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-controller="Order" asp-action="MyOrders" asp-route-id="@UserManager.GetUserId(User)">My Orders</a>
-        </li>
-        <li class="nav-item">
-            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                <button type="submit" class="nav-link btn btn-link text-danger">Logout</button>
-            </form>
-        </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarWhiteDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Hello @this.User.Identity?.Name!
+        </a>
+        <ul class="dropdown-menu dropdown-menu-white" aria-labelledby="navbarWhiteDropdownMenuLink">
+            <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index">Account</a></li>
+            <partial name="_AdminPartial" />
+            <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Logout">Log out</a></li>
+        </ul>
+    </li>
     }
     else
     {
