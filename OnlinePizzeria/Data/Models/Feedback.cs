@@ -21,8 +21,7 @@ namespace OnlinePizzeria.Data.Models
         public int Rate { get; init; }
 
         [DisplayName("Select Pizza")]
-        [ForeignKey(nameof(Pizza))]
-        public int PizzaId { get; init; }
+        public string PizzaId { get; init; }
         public Pizza Pizza { get; init; }
     }
 }
