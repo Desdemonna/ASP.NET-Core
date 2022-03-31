@@ -17,10 +17,9 @@ namespace OnlinePizzeria.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            optionsBuilder.UseSqlServer(
-              "Server = (localdb)\\mssqllocaldb; Database = OnlinePizzeria; Trusted_Connection = True; ");
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
