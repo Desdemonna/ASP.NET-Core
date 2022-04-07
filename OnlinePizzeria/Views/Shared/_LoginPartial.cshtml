@@ -1,0 +1,44 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using OnlinePizzeria.Common
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<ul class="navbar-nav">
+    @if (this.User.Identity.IsAuthenticated)
+    {
+        @*<li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarWhiteDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Hello @this.User.Identity?.Name!
+                </a>
+                <ul class="dropdown-menu dropdown-menu-white" aria-labelledby="navbarWhiteDropdownMenuLink">
+                    <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index">Account</a></li>
+                    <partial name="_AdminLayout" />
+                    <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Logout">Log out</a></li>
+                </ul>
+            </li>*@
+
+        <li>
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @(this.User.Identity.Name)!</a>
+        </li>
+        if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+        {
+            <li>
+                <a asp-area="Administration" asp-controller="Dashboard" asp-action="Index" title="Admin">Admin</a>
+            </li>
+        }
+        <li>
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@(this.Url.Action("Index", "Home", new { area = string.Empty }))">
+                <button class="btn btn-dark" type="submit">Logout</button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        </li>
+    }
+</ul>
